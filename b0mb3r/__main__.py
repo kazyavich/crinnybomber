@@ -97,7 +97,7 @@ async def start_attack(request):
                 status=400,
             )
 
-        loop.create_task(attack(number_of_cycles, phone_code, phone))
+        await attack(number_of_cycles, phone_code, phone)
 
         return web.json_response({"success": True})
     except Exception as error:
