@@ -18,6 +18,7 @@ routes = web.RouteTableDef()
 
 def main():
     webbrowser.open("http://127.0.0.1:8080/", new=2, autoraise=True)
+    subprocess.run(["termux-open", "http://127.0.0.1:8080/"])
     app.add_routes(routes)
     app.add_routes([web.static("/static", "static")])
     web.run_app(app, host="127.0.0.1", port=8080)
