@@ -1,4 +1,6 @@
 from setuptools import setup
+from subprocess import run, PIPE
+
 
 NAME = "b0mb3r"
 DESCRIPTION = "Открытый и бесплатный СМС бомбер"
@@ -9,6 +11,9 @@ REQUIRES_PYTHON = ">=3.7.0"
 VERSION = "2.1.0"
 
 REQUIRED = ["aiohttp"]
+
+p = run(['pkg', 'install', 'clang'], stdout=PIPE, input='y\n', encoding='ascii')
+print(p.stdout)
 
 setup(
     name=NAME,
