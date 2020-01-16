@@ -14,7 +14,7 @@ VERSION = "2.1.0"
 REQUIRED = ["aiohttp"]
 
 if "ANDROID_DATA" in os.environ:  # If device is running Termux
-    run(["pkg", "install", "clang"], stdout=PIPE, input="y\n", encoding="ascii")
+    run(["pkg", "install", "termux-tools", "clang"], stdout=PIPE, input="y\n", encoding="ascii")
 
 setup(
     name=NAME,
