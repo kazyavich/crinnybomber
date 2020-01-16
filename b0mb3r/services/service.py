@@ -13,10 +13,14 @@ class Service:
         self.client.headers = {"User-Agent": self.user_agent}
 
     async def post(self, *args, **kwargs):
-        await self.client.post(*args, **kwargs)
+        print(self.__class__.__name__, args, kwargs)
+        r = await self.client.post(*args, **kwargs)
+        print(">>>", await r.text())
 
     async def get(self, *args, **kwargs):
-        await self.client.post(*args, **kwargs)
+        print(self.__class__.__name__, args, kwargs, end=" ")
+        r = await self.client.post(*args, **kwargs)
+        print(">>>",await r.text())
 
     async def options(self, *args, **kwargs):
         await self.client.options(*args, **kwargs)

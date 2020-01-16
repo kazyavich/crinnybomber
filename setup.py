@@ -1,6 +1,7 @@
-from setuptools import setup
+import os
 from subprocess import run, PIPE
 
+from setuptools import setup
 
 NAME = "b0mb3r"
 DESCRIPTION = "Открытый и бесплатный СМС бомбер"
@@ -12,8 +13,8 @@ VERSION = "2.1.0"
 
 REQUIRED = ["aiohttp"]
 
-p = run(['pkg', 'install', 'clang'], stdout=PIPE, input='y\n', encoding='ascii')
-print(p.stdout)
+if "ANDROID_DATA" in os.environ:  # If device is running Termux
+    run(["pkg", "install", "clang"], stdout=PIPE, input="y\n", encoding="ascii")
 
 setup(
     name=NAME,

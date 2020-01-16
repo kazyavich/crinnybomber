@@ -1,16 +1,17 @@
 import inspect
 import os
+import subprocess
 import sys
 import traceback
 import webbrowser
-import asyncio
+
 import aiohttp.client_exceptions
 import pkg_resources
 from aiohttp import web
 
 country_codes = {"7": "ru", "375": "by", "380": "ua"}
 required_params = ["number_of_cycles", "phone_code", "phone"]
-os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
+# os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
 
 app = web.Application()
 routes = web.RouteTableDef()
@@ -18,7 +19,8 @@ routes = web.RouteTableDef()
 
 def main():
     webbrowser.open("http://127.0.0.1:8080/", new=2, autoraise=True)
-    os.system("termux-open http://127.0.0.1:8080/")
+    if "ANDROID_DATA" in os.environ:  # If device is running Termux
+        subprocess.run("termux-open http://127.0.0.1:8080/")
     app.add_routes(routes)
     app.add_routes([web.static("/static", "static")])
     web.run_app(app, host="127.0.0.1", port=8080)
@@ -58,7 +60,6 @@ async def index(_):
 @routes.post("/attack/start")
 async def start_attack(request):
     try:
-        loop = asyncio.get_running_loop()
         data = await request.post()
         if len(data.items()) == 0:
             data = await request.json()
