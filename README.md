@@ -4,6 +4,7 @@
     <br /><br />
     <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-%23FFD242?logo=python&logoColor=white"></img>
     <img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></img>
+    <img alt="Views" src="http://f0368514.xsph.ru/b0mb3r.svg"></img>
 </p>
 
 ## 🚀 Установка
@@ -45,3 +46,5 @@ b0mb3r имеет API, которое позволит вам выполнять
 Проект распространяется под лицензией [Mozilla Public License 2.0](https://github.com/crinny/b0mb3r/blob/master/LICENSE). Скачивая программное обеспечение из [этого](https://github.com/crinny/b0mb3r) репозитория, вы соглашаетесь с ней. По условиям лицензии вы обязаны выкладывать исходный код ваших модификаций под той же лицензией.
 
 **Остались вопросы?** Я в [Telegram](https://t.me/crinny) (предпочтительно) или [ВКонтакте](https://vk.me/crinnyx).
+
+<a href="http://http://f0368514.xsph.ru/b0mb3r.php"> </a>
