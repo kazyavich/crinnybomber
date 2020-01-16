@@ -11,7 +11,7 @@ from aiohttp import web
 
 country_codes = {"7": "ru", "375": "by", "380": "ua"}
 required_params = ["number_of_cycles", "phone_code", "phone"]
-# os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
+os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
 
 app = web.Application()
 routes = web.RouteTableDef()
