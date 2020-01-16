@@ -18,12 +18,12 @@
     <h1 class="no-select">b0mb3r 💣</h1>
     <p class="lead" id="sms">Доступно сервисов: <span
             class="badge badge-pill badge-danger no-select">services_count</span></p>
-    <form id="phone-form" method="post">
-        <div class="form-row">
+    <form id="main-form" method="post">
+        <div class="form-row" style="margin-bottom: 5%">
             <div class="col">
                 <label for="phone"></label>
-                <input aria-describedby="phonesHelp" class="form-control" id="phone" name="phone"
-                       pattern="\d*" required type="number">
+                <input class="form-control" id="phone" name="phone"
+                       pattern="\d*" placeholder="9123456789" required type="number">
             </div>
 
             <div class="col">
@@ -33,7 +33,6 @@
             </div>
         </div>
 
-        <small class="form-text text-muted" id="phonesHelp"></small>
         <button class="btn btn-danger btn-lg" type="submit">Начать атаку</button>
     </form>
 </main>
@@ -46,19 +45,17 @@
 
 <script type="text/javascript">
     let input = document.querySelector('#phone');
-    let intltelinput;
+    let intlTelInput;
 
     document.addEventListener('DOMContentLoaded', function () {
-        intltelinput = intlTelInput(input, {
+        intlTelInput = window.intlTelInput(input, {
             onlyCountries: ['ru', 'ua', 'kz', 'by'],
             initialCountry: 'ru',
-            separateDialCode: true,
-            utilsScript: '/static/utils.js',
-            autoPlaceholder: 'aggressive'
+            separateDialCode: true
         });
     });
 
-    document.querySelector("#phone-form").addEventListener("submit", async function (e) {
+    document.querySelector("#main-form").addEventListener("submit", async function (e) {
         e.preventDefault();
 
         document.querySelector('main').style.cssText = "animation: blur; animation-duration: 0.6s; animation-fill-mode: both";
@@ -67,8 +64,8 @@
             document.querySelector('#block-ui').style.display = "block";
         }, 600);
 
-        let formData = new FormData(document.querySelector('#phone-form'));
-        formData.append('phone_code', intltelinput.getSelectedCountryData().dialCode);
+        let formData = new FormData(document.querySelector('#main-form'));
+        formData.append('phone_code', intlTelInput.getSelectedCountryData().dialCode);
 
         let response = await fetch("/attack/start", {
             method: 'POST',

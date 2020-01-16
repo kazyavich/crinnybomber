@@ -18,13 +18,15 @@ routes = web.RouteTableDef()
 
 
 def main():
-    webbrowser.open("http://127.0.0.1:8080/", new=2, autoraise=True)
     try:
-        subprocess.run("termux-open http://127.0.0.1:8080/")
-    except Exception:
+        if "ANDROID_DATA" in os.environ:  # If device is running Termux
+            subprocess.run("termux-open http://127.0.0.1:8080/")
+    except FileNotFoundError:
         pass
+
     app.add_routes(routes)
     app.add_routes([web.static("/static", "static")])
+    webbrowser.open("http://127.0.0.1:8080/", new=2, autoraise=True)
     web.run_app(app, host="127.0.0.1", port=8080)
 
 
@@ -54,8 +56,9 @@ async def attack(number_of_cycles: int, phone_code: str, phone):
 
 @routes.get("/")
 async def index(_):
-    with open("templates/index.html", "r", encoding="utf-8") as template:
-        response = template.read().replace("services_count", str(len(load_services())))
+    with open("templates/index.html", encoding="utf-8") as template:
+        services_count = str(len(load_services()))
+        response = template.read().replace("services_count", services_count)
         return web.Response(text=response, content_type="text/html")
 
 
@@ -115,7 +118,3 @@ async def start_attack(request):
             },
             status=500,
         )
-
-
-if __name__ == "__main__":
-    main()

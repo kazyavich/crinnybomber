@@ -15,20 +15,12 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-.form-check {
-    width: 100%;
-}
-
 .no-select {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-
-#phonesHelp {
-    margin-bottom: 5%;
 }
 
 #loader {
@@ -55,10 +47,6 @@ input[type="number"] {
     cursor: wait;
 }
 
-.form-check {
-    margin-bottom: 2%;
-}
-
 .footer {
     background: #f5f5f5;
     position: fixed;
@@ -75,6 +63,10 @@ input[type="number"] {
 .heart:hover {
     animation: heartbeat 1s infinite;
     animation-timing-function: linear;
+}
+
+.iti__flag {
+    background-image: url("flags.png");
 }
 
 @keyframes heartbeat {
@@ -96,10 +88,6 @@ input[type="number"] {
     100% {
         transform: scale(.75);
     }
-}
-
-.iti__flag {
-    background-image: url("flags.png");
 }
 
 @keyframes pulsate {
@@ -128,7 +116,7 @@ input[type="number"] {
 }
 
 @media screen and (min-width: 250px) and  (max-width: 768px) {
-    #phone-form {
+    #main-form {
         margin-right: 6%;
         margin-left: 6%;
     }
