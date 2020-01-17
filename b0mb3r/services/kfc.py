@@ -1,7 +1,7 @@
 from service import Service
 
 
-class FindClone(Service):
+class KFC(Service):
     async def run(self):
         await self.post(
             "https://app-api.kfc.ru/api/v1/common/auth/send-validation-sms",

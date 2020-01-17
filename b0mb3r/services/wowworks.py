@@ -1,7 +1,7 @@
 from service import Service
 
 
-class AtPrime(Service):
+class WowWorks(Service):
     async def run(self):
         await self.post(
             "https://api.wowworks.ru/v2/site/send-code",
