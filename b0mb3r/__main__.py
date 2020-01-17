@@ -1,5 +1,6 @@
 import inspect
 import os
+import re
 import subprocess
 import sys
 import traceback
@@ -80,7 +81,7 @@ async def start_attack(request):
                     },
                     status=400,
                 )
-        phone = data["phone"].replace("-", "").replace(" ", "")
+        phone = re.sub("[^0-9]", "", data["phone"])
 
         number_of_cycles = int(data["number_of_cycles"])
         if int(number_of_cycles) < 1:
