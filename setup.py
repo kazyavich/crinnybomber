@@ -9,7 +9,7 @@ URL = "https://github.com/crinny/b0mb3r"
 EMAIL = ""
 AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = "2.1.0"
+VERSION = "2.1.1"
 
 REQUIRED = ["aiohttp"]
 
@@ -40,7 +40,7 @@ setup(
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
