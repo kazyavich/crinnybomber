@@ -62,3 +62,5 @@ print(request.json())
 Проект распространяется под лицензией [Mozilla Public License 2.0](https://github.com/crinny/b0mb3r/blob/master/LICENSE). Скачивая программное обеспечение из [этого](https://github.com/crinny/b0mb3r) репозитория, вы соглашаетесь с ней. По условиям лицензии вы обязаны выкладывать исходный код ваших модификаций под той же лицензией.
 
 **Остались вопросы?** Я в [Telegram](https://t.me/crinny) (предпочтительно) или [ВКонтакте](https://vk.me/crinnyx). [Прочтите](http://neprivet.ru/), прежде чем писать
+
+Канал с новостями о разработке в Telegram: https://t.me/b0mb3rch
