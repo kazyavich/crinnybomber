@@ -72,7 +72,6 @@ async def start_attack(request):
 
         for required_param in required_params:
             if required_param not in data:
-                print(required_param, await request.post(), await request.json())
                 return web.json_response(
                     {
                         "success": False,
