@@ -1,6 +1,6 @@
 <h1 align="center">Добро пожаловать в b0mb3r 👋</h1>
 <p align="center">
-    <sub>Открытый и бесплатный СМС бомбер</sub>
+    >Открытый и бесплатный СМС бомбер
     <br /><br />
     <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-%23FFD242?logo=python&logoColor=white"></img>
     <img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></img>
