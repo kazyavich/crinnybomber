@@ -14,7 +14,7 @@
     ### Для Android
     Установите приложение [Termux](https://play.google.com/store/apps/details?id=com.termux), запустите его и следуйте [инструкции](https://wiki.termux.com/wiki/Python).
 
-2. Введите следующую команду:
+2. Введите следующую команду ([куда?](https://beginpc.ru/windows/komandnaya-stroka)):
 ```sh
 pip3 install b0mb3r --upgrade
 ```
