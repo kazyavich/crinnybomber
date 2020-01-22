@@ -16,7 +16,7 @@ class Service:
         await self.client.post(*args, **kwargs)
 
     async def get(self, *args, **kwargs):
-        await self.client.post(*args, **kwargs)
+        await self.client.get(*args, **kwargs)
 
     async def options(self, *args, **kwargs):
         await self.client.options(*args, **kwargs)
