@@ -28,6 +28,9 @@ def main():
     app.add_routes(routes)
     app.add_routes([web.static("/static", "static")])
     webbrowser.open("http://127.0.0.1:8080/", new=2, autoraise=True)
+    print(
+        "Интерфейс запущен по адресу http://127.0.0.1:8080/. Откройте ссылку в браузере, если это не произошло автоматически."
+    )
     web.run_app(app, host="127.0.0.1", port=8080)
 
 
@@ -120,5 +123,4 @@ async def start_attack(request):
         )
 
 
-if __name__ == "__main__":
-    main()
+main()
