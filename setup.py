@@ -9,7 +9,7 @@ URL = "https://github.com/crinny/b0mb3r"
 EMAIL = ""
 AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = "2.1.2"
+VERSION = "2.1.3"
 
 REQUIRED = ["aiohttp"]
 
