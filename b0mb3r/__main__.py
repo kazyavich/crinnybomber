@@ -18,18 +18,6 @@ app = web.Application()
 routes = web.RouteTableDef()
 
 
-def restart_program():
-    try:
-        p = psutil.Process(os.getpid())
-        for handler in p.open_files() + p.connections():
-            os.close(handler.fd)
-    except Exception as e:
-        print(e)
-
-    python = sys.executable
-    os.execl(python, python, *sys.argv)
-
-
 def open_url(url: str):
     try:
         if "ANDROID_DATA" in os.environ:  # If device is running Termux
@@ -40,6 +28,7 @@ def open_url(url: str):
 
 
 def main():
+    print(sys.executable)
     output = subprocess.run([sys.executable, "-m", "pip", "list", "--outdated"], stdout=subprocess.PIPE)
     if "b0mb3r" in output.stdout.decode():
         subprocess.run([sys.executable, "-m", "pip", "install", "b0mb3r", "--upgrade"])
