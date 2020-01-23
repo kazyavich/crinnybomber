@@ -40,7 +40,7 @@ def open_url(url: str):
 
 
 def main():
-    output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
+    output = subprocess.run([sys.executable, "-m", "pip", "list", "--outdated"], stdout=subprocess.PIPE)
     if "b0mb3r" in output.stdout.decode():
         subprocess.run([sys.executable, "-m", "pip", "install", "b0mb3r", "--upgrade"])
         subprocess.run("b0mb3r")
