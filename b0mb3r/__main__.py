@@ -28,10 +28,10 @@ def open_url(url: str):
 
 
 def main():
-    output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
-    if "b0mb3r" in output.stdout.decode():
-        subprocess.run(["pip3", "install", "b0mb3r", "--upgrade"])
-        subprocess.run("b0mb3r")
+#    output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
+#    if "b0mb3r" in output.stdout.decode():
+#        subprocess.run(["pip3", "install", "b0mb3r", "--upgrade"])
+#        subprocess.run("b0mb3r")
 
     app.add_routes(routes)
     app.add_routes([web.static("/static", "static")])
