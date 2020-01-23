@@ -18,16 +18,36 @@ app = web.Application()
 routes = web.RouteTableDef()
 
 
-def main():
+def restart_program():
+    try:
+        p = psutil.Process(os.getpid())
+        for handler in p.open_files() + p.connections():
+            os.close(handler.fd)
+    except Exception as e:
+        print(e)
+
+    python = sys.executable
+    os.execl(python, python, *sys.argv)
+
+
+def open_url(url: str):
     try:
         if "ANDROID_DATA" in os.environ:  # If device is running Termux
-            subprocess.run("termux-open http://127.0.0.1:8080/")
+            subprocess.run(["termux-open", url])
     except FileNotFoundError:
         pass
+    webbrowser.open(url, new=2, autoraise=True)
+
+
+def main():
+    output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
+    if "b0mb3r" in output.stdout.decode():
+        subprocess.run([sys.executable, "-m", "pip", "install", "b0mb3r", "--upgrade"])
+        subprocess.run("b0mb3r")
 
     app.add_routes(routes)
     app.add_routes([web.static("/static", "static")])
-    webbrowser.open("http://127.0.0.1:8080/", new=2, autoraise=True)
+    open_url("http://127.0.0.1:8080/")
     print(
         "Интерфейс запущен по адресу http://127.0.0.1:8080/. Откройте ссылку в браузере, если это не произошло автоматически."
     )

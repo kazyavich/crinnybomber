@@ -12,11 +12,6 @@ class Service:
 
         self.client.headers = {"User-Agent": self.user_agent}
 
-    async def post(self, *args, **kwargs):
-        await self.client.post(*args, **kwargs)
-
-    async def get(self, *args, **kwargs):
-        await self.client.get(*args, **kwargs)
-
-    async def options(self, *args, **kwargs):
-        await self.client.options(*args, **kwargs)
+        self.get = self.client.get
+        self.post = self.client.post
+        self.options = self.client.options
