@@ -4,7 +4,6 @@
     <br /><br />
     <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-%23FFD242?logo=python&logoColor=white"></img>
     <img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></img>
-    <img alt="HitCount" src="http://hits.dwyl.io/crinny/b0mb3r.svg"></img>
 </p>
 
 ## 🚀 Установка
@@ -64,3 +63,7 @@ print(request.json())
 **Остались вопросы?** Я в [Telegram](https://t.me/crinny) (предпочтительно) или [ВКонтакте](https://vk.me/crinnyx). [Прочтите](http://neprivet.ru/), прежде чем писать
 
 Канал с новостями о разработке в Telegram: https://t.me/b0mb3rch
+
+<p align="center">
+    <img alt="Скриншот" src="https://user-images.githubusercontent.com/42045258/73071671-6bb8b280-3ec4-11ea-8083-fef10b8f380b.png"</img>
+</p>
