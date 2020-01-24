@@ -8,12 +8,13 @@ import webbrowser
 
 import aiohttp.client_exceptions
 import pkg_resources
+import phonenumbers
 from aiohttp import web
 
 country_codes = {"7": "ru", "375": "by", "380": "ua"}
 required_params = ["number_of_cycles", "phone_code", "phone"]
 
-os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
+# os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
 
 app = web.Application()
 routes = web.RouteTableDef()
@@ -22,7 +23,18 @@ routes = web.RouteTableDef()
 def open_url(url: str):
     try:
         if "ANDROID_DATA" in os.environ:  # If device is running Termux
-            subprocess.run(["termux-open", url])
+            subprocess.run(
+                [
+                    "am",
+                    "start",
+                    "--user",
+                    "0",
+                    "-a",
+                    "android.intent.action.VIEW",
+                    "-d",
+                    url,
+                ]
+            )
     except FileNotFoundError:
         pass
     webbrowser.open(url, new=2, autoraise=True)
@@ -109,7 +121,9 @@ async def start_attack(request):
             )
 
         phone_code = data["phone_code"]
-        if phone_code not in country_codes.keys():
+        if phone_code == "":
+            phone_code = str(phonenumbers.parse("+" + phone).country_code)
+        elif phone_code not in country_codes.keys():
             return web.json_response(
                 {
                     "success": False,

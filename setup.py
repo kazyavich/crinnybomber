@@ -9,16 +9,13 @@ URL = "https://github.com/crinny/b0mb3r"
 EMAIL = "b0mb3r.abuse@gmail.com"
 AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = "2.2.1"
+VERSION = "2.2.2"
 
-REQUIRED = ["aiohttp"]
+REQUIRED = ["aiohttp", "phonenumbers"]
 
 if "ANDROID_DATA" in os.environ:  # If device is running Termux
     run(
-        ["pkg", "install", "termux-tools", "clang"],
-        stdout=PIPE,
-        input="y\n",
-        encoding="ascii",
+        ["pkg", "install", "clang"], stdout=PIPE, input="y\n", encoding="ascii",
     )
 
 setup(
