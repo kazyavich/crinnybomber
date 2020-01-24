@@ -12,6 +12,7 @@ from aiohttp import web
 
 country_codes = {"7": "ru", "375": "by", "380": "ua"}
 required_params = ["number_of_cycles", "phone_code", "phone"]
+
 os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
 
 app = web.Application()
@@ -27,9 +28,9 @@ def open_url(url: str):
     webbrowser.open(url, new=2, autoraise=True)
 
 
-def main():
+def main(skip_updates=False):
     output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
-    if "b0mb3r" in output.stdout.decode():
+    if "b0mb3r" in output.stdout.decode() and not skip_updates:
         subprocess.run(
             ["pip3", "install", "b0mb3r", "--upgrade"], stdout=subprocess.PIPE
         )
