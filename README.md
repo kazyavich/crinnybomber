@@ -16,7 +16,7 @@
 
 2. Введите следующую команду ([куда?](https://beginpc.ru/windows/komandnaya-stroka)):
 ```sh
-pip3 install b0mb3r --upgrade
+pip3 install b0mb3r -U
 ```
 
 ## Запуск
