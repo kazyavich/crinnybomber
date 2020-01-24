@@ -40,7 +40,7 @@ setup(
     },
     install_requires=REQUIRED,
     extras_require={},
-    package_data={"b0mb3r": ["static/*", "templates/*", "services/*"]},
+    package_data={"b0mb3r": ["static/*/*", "templates/*", "services/*"]},
     license="Mozilla Public License 2.0",
     classifiers=[
         "Programming Language :: Python",
