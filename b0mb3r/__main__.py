@@ -28,18 +28,18 @@ def open_url(url: str):
 
 
 def main():
-#    output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
-#    if "b0mb3r" in output.stdout.decode():
-#        subprocess.run(["pip3", "install", "b0mb3r", "--upgrade"])
-#        subprocess.run("b0mb3r")
-
-    app.add_routes(routes)
-    app.add_routes([web.static("/static", "static")])
-    open_url("http://127.0.0.1:8080/")
-    print(
-        "Интерфейс запущен по адресу http://127.0.0.1:8080/. Откройте ссылку в браузере, если это не произошло автоматически."
-    )
-    web.run_app(app, host="127.0.0.1", port=8080)
+    output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
+    if "b0mb3r" in output.stdout.decode():
+        subprocess.run(["pip3", "install", "b0mb3r", "--upgrade"], stdout=subprocess.PIPE)
+        os.system("b0mb3r")
+    else:
+        app.add_routes(routes)
+        app.add_routes([web.static("/static", "static")])
+        open_url("http://127.0.0.1:8080/")
+        print(
+            "Интерфейс запущен по адресу http://127.0.0.1:8080/. Откройте ссылку в браузере, если это не произошло автоматически."
+        )
+        web.run_app(app, host="127.0.0.1", port=8080)
 
 
 def load_services():
