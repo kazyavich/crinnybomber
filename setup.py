@@ -30,10 +30,7 @@ setup(
     url=URL,
     packages=["b0mb3r"],
     entry_points={
-        "console_scripts": [
-            "b0mb3r=b0mb3r.__main__:main",
-            "bomber=b0mb3r.__main__:main",
-        ]
+        "console_scripts": ["b0mb3r=b0mb3r.__main__:main", "bomber=b0mb3r.__main__:main",]
     },
     install_requires=REQUIRED,
     extras_require={},

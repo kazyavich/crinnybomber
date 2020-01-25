@@ -24,16 +24,7 @@ def open_url(url: str):
     try:
         if "ANDROID_DATA" in os.environ:  # If device is running Termux
             subprocess.run(
-                [
-                    "am",
-                    "start",
-                    "--user",
-                    "0",
-                    "-a",
-                    "android.intent.action.VIEW",
-                    "-d",
-                    url,
-                ]
+                ["am", "start", "--user", "0", "-a", "android.intent.action.VIEW", "-d", url,]
             )
     except FileNotFoundError:
         pass
@@ -43,9 +34,7 @@ def open_url(url: str):
 def main(skip_updates=False):
     output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
     if "b0mb3r" in output.stdout.decode() and not skip_updates:
-        subprocess.run(
-            ["pip3", "install", "b0mb3r", "--upgrade"], stdout=subprocess.PIPE
-        )
+        subprocess.run(["pip3", "install", "b0mb3r", "--upgrade"], stdout=subprocess.PIPE)
         os.system("b0mb3r")
     else:
         app.add_routes(routes)
