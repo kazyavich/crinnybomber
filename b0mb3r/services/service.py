@@ -1,8 +1,11 @@
+import random
+import string
+
 import aiohttp
 
 
 class Service:
-    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+    user_agent = "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2224.3 Safari/537.36"
     client = aiohttp.ClientSession()
 
     def __init__(self, phone, phone_code):
@@ -11,6 +14,11 @@ class Service:
         self.formatted_phone = self.phone_code + self.phone
 
         self.client.headers = {"User-Agent": self.user_agent}
+
+        self.username = self.password = "".join(
+            random.choice(string.ascii_letters) for _ in range(12)
+        )
+        self.email = self.username + "@gmail.com"
 
         self.get = self.client.get
         self.post = self.client.post

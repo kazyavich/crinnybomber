@@ -11,8 +11,8 @@ import phonenumbers
 import pkg_resources
 from aiohttp import web
 
-country_codes = {"7": "ru", "375": "by", "380": "ua"}
-required_params = ["number_of_cycles", "phone_code", "phone"]
+COUNTRY_CODES = {"7": "ru", "375": "by", "380": "ua"}
+API_REQUIRED_PARAMS = ["number_of_cycles", "phone_code", "phone"]
 
 os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
 
@@ -40,10 +40,6 @@ def main(skip_updates=False):
         app.add_routes(routes)
         app.add_routes([web.static("/static", "static")])
         open_url("http://127.0.0.1:8080/")
-        print(
-            "Интерфейс запущен по адресу http://127.0.0.1:8080/. "
-            "Откройте ссылку в браузере, если это не произошло автоматически."
-        )
         web.run_app(app, host="127.0.0.1", port=8080)
 
 
@@ -86,7 +82,7 @@ async def start_attack(request):
         if len(data.items()) == 0:
             data = await request.json()
 
-        for required_param in required_params:
+        for required_param in API_REQUIRED_PARAMS:
             if required_param not in data:
                 return web.json_response(
                     {
@@ -112,7 +108,7 @@ async def start_attack(request):
         phone_code = data["phone_code"]
         if phone_code == "":
             phone_code = str(phonenumbers.parse("+" + phone).country_code)
-        elif phone_code not in country_codes.keys():
+        elif phone_code not in COUNTRY_CODES.keys():
             return web.json_response(
                 {
                     "success": False,
@@ -138,4 +134,5 @@ async def start_attack(request):
         )
 
 
-main()
+if __name__ == "__main__":
+    main()

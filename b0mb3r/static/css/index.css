@@ -43,10 +43,6 @@ input[type="number"] {
     animation-timing-function: linear;
 }
 
-.iti__flag {
-    background-image: url("/static/img/flags.png");
-}
-
 #loader {
     border: 5px solid #dc3545;
     border-radius: 50%;
@@ -71,22 +67,31 @@ input[type="number"] {
     cursor: wait;
 }
 
+.iti__flag {
+    background-image: url("/static/img/flags.png");
+}
+
 @keyframes heartbeat {
     0% {
         transform: scale(.75);
     }
+
     20% {
         transform: scale(1);
     }
+
     40% {
         transform: scale(.75);
     }
+
     60% {
         transform: scale(1);
     }
+
     80% {
         transform: scale(.75);
     }
+
     100% {
         transform: scale(.75);
     }
@@ -97,9 +102,11 @@ input[type="number"] {
         transform: scale(.1);
         opacity: 0.0;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         transform: scale(1.2);
         opacity: 0;
@@ -111,6 +118,7 @@ input[type="number"] {
         -webkit-filter: blur(0px);
         filter: blur(0px);
     }
+
     to {
         -webkit-filter: blur(3px);
         filter: blur(3px);
