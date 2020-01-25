@@ -7,6 +7,7 @@ import traceback
 import webbrowser
 
 import aiohttp.client_exceptions
+import click
 import phonenumbers
 import pkg_resources
 from aiohttp import web
@@ -31,7 +32,10 @@ def open_url(url: str):
     webbrowser.open(url, new=2, autoraise=True)
 
 
-def main(skip_updates=False):
+@click.command()
+@click.option("--ip", default="127.0.0.1")
+@click.option("--port", default="8080")
+def main(ip, port, skip_updates=False):
     output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
     if "b0mb3r" in output.stdout.decode() and not skip_updates:
         subprocess.run(["pip3", "install", "b0mb3r", "--upgrade"], stdout=subprocess.PIPE)
@@ -39,8 +43,8 @@ def main(skip_updates=False):
     else:
         app.add_routes(routes)
         app.add_routes([web.static("/static", "static")])
-        open_url("http://127.0.0.1:8080/")
-        web.run_app(app, host="127.0.0.1", port=8080)
+        open_url(f"http://{ip}:{port}/")
+        web.run_app(app, host=ip, port=port)
 
 
 def load_services():
