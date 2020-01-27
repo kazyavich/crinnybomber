@@ -39,7 +39,7 @@ def update_if_required():
     output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
     if "b0mb3r" in output.stdout.decode():
         subprocess.run(["pip3", "install", "b0mb3r", "--upgrade"], stdout=subprocess.PIPE)
-        os.execlp("b0mb3r", " ".join(sys.argv[1:]) or " ")
+        os.execlp("b0mb3r", " ".join(sys.argv[1:]) or "--port 8080")
 
 
 def open_url(url: str):
