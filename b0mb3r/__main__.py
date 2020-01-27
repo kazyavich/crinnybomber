@@ -21,6 +21,27 @@ app = web.Application()
 routes = web.RouteTableDef()
 
 
+@click.command()
+@click.option("--ip", default="127.0.0.1")
+@click.option("--port", default="8080")
+@click.option("--skip-updates", is_flag=True, default=False)
+def main(ip, port, skip_updates):
+    if not skip_updates:
+        update_if_required()
+
+    app.add_routes(routes)
+    app.add_routes([web.static("/static", "static")])
+    open_url(f"http://{ip}:{port}/")
+    web.run_app(app, host=ip, port=port)
+
+
+def update_if_required():
+    output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
+    if "b0mb3r" in output.stdout.decode():
+        subprocess.run(["pip3", "install", "b0mb3r", "--upgrade"], stdout=subprocess.PIPE)
+        os.execlp("b0mb3r", " ".join(sys.argv[1:]))
+
+
 def open_url(url: str):
     try:
         if "ANDROID_DATA" in os.environ:  # If device is running Termux
@@ -32,25 +53,10 @@ def open_url(url: str):
     webbrowser.open(url, new=2, autoraise=True)
 
 
-@click.command()
-@click.option("--ip", default="127.0.0.1")
-@click.option("--port", default="8080")
-def main(ip, port, skip_updates=False):
-    output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
-    if "b0mb3r" in output.stdout.decode() and not skip_updates:
-        subprocess.run(["pip3", "install", "b0mb3r", "--upgrade"], stdout=subprocess.PIPE)
-        os.execlp("b0mb3r", " ".join(sys.argv[1:]))
-    else:
-        app.add_routes(routes)
-        app.add_routes([web.static("/static", "static")])
-        open_url(f"http://{ip}:{port}/")
-        web.run_app(app, host=ip, port=port)
-
-
 def load_services():
     services = os.listdir("services")
-    service_classes = {}
     sys.path.insert(0, "services")
+    service_classes = {}
 
     for service in services:
         if service.endswith(".py") and service != "service.py":
