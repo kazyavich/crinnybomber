@@ -39,7 +39,7 @@ def main(ip, port, skip_updates=False):
     output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
     if "b0mb3r" in output.stdout.decode() and not skip_updates:
         subprocess.run(["pip3", "install", "b0mb3r", "--upgrade"], stdout=subprocess.PIPE)
-        os.system("b0mb3r")
+        os.execlp("b0mb3r", sys.argv[1:])
     else:
         app.add_routes(routes)
         app.add_routes([web.static("/static", "static")])
