@@ -25,9 +25,12 @@ routes = web.RouteTableDef()
 @click.option("--ip", default="127.0.0.1")
 @click.option("--port", default="8080")
 @click.option("--skip-updates", is_flag=True, default=False)
-def main(ip, port, skip_updates):
-    if not skip_updates:
-        update_if_required()
+@click.option("--repair", is_flag=True, default=False)
+def main(ip, port, skip_updates, repair):
+    if repair:
+        update(force=True)
+    elif not skip_updates:
+        update()
 
     app.add_routes(routes)
     app.add_routes([web.static("/static", "static")])
@@ -35,9 +38,9 @@ def main(ip, port, skip_updates):
     web.run_app(app, host=ip, port=port)
 
 
-def update_if_required():
+def update(force=False):
     output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
-    if "b0mb3r" in output.stdout.decode():
+    if force or "b0mb3r" in output.stdout.decode():
         subprocess.run(["pip3", "install", "b0mb3r", "--upgrade"], stdout=subprocess.PIPE)
         os.execlp("b0mb3r", " ".join(sys.argv[1:]) or "--port 8080")
 
