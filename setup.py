@@ -1,3 +1,4 @@
+import io
 import os
 from subprocess import run, PIPE
 
@@ -17,6 +18,14 @@ if "ANDROID_DATA" in os.environ:  # If device is running Termux
     run(
         ["pkg", "install", "clang"], stdout=PIPE, input="y\n", encoding="ascii",
     )
+
+here = os.path.abspath(os.path.dirname(__file__))
+
+try:
+    with io.open(os.path.join(here, "README.md"), encoding="utf-8") as f:
+        long_description = "\n" + f.read()
+except FileNotFoundError:
+    long_description = DESCRIPTION
 
 setup(
     name=NAME,
