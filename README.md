@@ -2,19 +2,19 @@
 <p align="center">
     Открытый и бесплатный СМС бомбер
     <br /><br />
-    <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-%23FFD242?logo=python&logoColor=white"></img>
-    <img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></img>
+    <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-%23FFD242?logo=python&logoColor=white">
+    <img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
 </p>
 
 ## 🚀 Установка
 
 1. Установите Python версии не ниже 3.7. Сделать это можно так:
 
-    ### Для Windows
+    <h3>Для Windows<h3>
 
     Скачайте установщик с [официального сайта](https://www.python.org/downloads/) и запустите его. Убедитесь, что при установке отметили галочку ![Add Python to PATH](https://user-images.githubusercontent.com/42045258/69171091-557d2780-0b0c-11ea-8adf-7f819357f041.png)
 
-    ### Для Android
+    <h3>Для Android<h3>
 
     Установите приложение [Termux](https://play.google.com/store/apps/details?id=com.termux), запустите его и введите команду `pkg install python`.
 
