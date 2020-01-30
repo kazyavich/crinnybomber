@@ -1,10 +1,9 @@
-<meta name="Keywords" content="смс бомбер,sms bomber,скачать смс бомбер,смс бомбер +на андроид,смс бомбер бесплатно,смс бомбер +на пк">
-
 <h1 align="center">Добро пожаловать в b0mb3r 👋</h1>
 <p align="center">
     Открытый и бесплатный СМС бомбер
     <br /><br />
     <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-%23FFD242?logo=python&logoColor=white">
+    <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dw/b0mb3r?color=%230073b7&logo=pypi&logoColor=white">
     <img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
 </p>
 
