@@ -25,8 +25,8 @@ routes = web.RouteTableDef()
 @click.option("--ip", default="127.0.0.1")
 @click.option("--port", default="8080")
 @click.option("--skip-updates", is_flag=True, default=False)
-@click.option("--repair", is_flag=True, default=False)
-def main(ip, port, skip_updates, repair):
+@click.option("--repair", "--force-update", is_flag=True, default=False)
+def main(ip: str, port: int, skip_updates: bool, repair: bool):
     if repair:
         update(force=True)
     elif not skip_updates:
@@ -38,7 +38,7 @@ def main(ip, port, skip_updates, repair):
     web.run_app(app, host=ip, port=port)
 
 
-def update(force=False):
+def update(force: bool = False):
     output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
     if force or "b0mb3r" in output.stdout.decode():
         subprocess.run(
@@ -74,7 +74,7 @@ def load_services():
     return service_classes
 
 
-async def attack(number_of_cycles: int, phone_code: str, phone):
+async def attack(number_of_cycles: int, phone_code: str, phone: str):
     for _ in range(number_of_cycles):
         for module, service in load_services().items():
             try:
@@ -150,5 +150,4 @@ async def start_attack(request):
         )
 
 
-if __name__ == "__main__":
-    main()
+main()
