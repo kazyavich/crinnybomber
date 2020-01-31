@@ -10,7 +10,7 @@ let countryMap = {
 };
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     window.intlTelInputGlobals.getCountryData().push({
         name: "Нет в списке",
         iso2: "custom",
@@ -26,17 +26,17 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-input.addEventListener("countrychange", function () {
+input.addEventListener("countrychange", () => {
     input.placeholder = countryMap[intlTelInput.getSelectedCountryData().iso2];
 });
 
 
-document.querySelector("#main-form").addEventListener("submit", async function (e) {
+document.querySelector("#main-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    document.querySelector('main').style.cssText = "animation:blur;animation-duration:0.6s;animation-fill-mode:both";
+    document.querySelector('main').style.cssText = "animation:blur; animation-duration:0.6s; animation-fill-mode:both";
     document.querySelector('footer').style.cssText = document.querySelector('main').style.cssText;
-    setTimeout(function () {
+    setTimeout(() => {
         document.querySelector('#block-ui').style.display = "block";
     }, 600);
 
@@ -48,9 +48,9 @@ document.querySelector("#main-form").addEventListener("submit", async function (
         body: formData,
     });
     if (response) {
-        document.querySelector('main').style.cssText = "animation:blur;animation-duration:0.6s;animation-fill-mode:both;animation-direction:reverse";
+        document.querySelector('main').style.cssText = "animation:blur; animation-duration:0.6s; animation-fill-mode:both; animation-direction:reverse";
         document.querySelector('footer').style.cssText = document.querySelector('main').style.cssText;
-        setTimeout(function () {
+        setTimeout(() => {
             document.querySelector('#block-ui').style.display = "none";
         }, 600);
     }
