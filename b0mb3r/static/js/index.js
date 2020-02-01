@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     intlTelInput = window.intlTelInput(input, {
         onlyCountries: ['ru', 'ua', 'kz', 'by', 'custom'],
         initialCountry: 'ru',
-        separateDialCode: true
+        separateDialCode: true,
+        preferredCountries: ['ru', 'ua', 'kz', 'by']
     });
 });
 
