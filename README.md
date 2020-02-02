@@ -47,5 +47,3 @@ pip3 install b0mb3r -U
 Проект распространяется под лицензией [Mozilla Public License 2.0](https://github.com/crinny/b0mb3r/blob/master/LICENSE). Скачивая программное обеспечение из [этого](https://github.com/crinny/b0mb3r) репозитория, вы соглашаетесь с ней. По условиям лицензии вы обязаны выкладывать исходный код ваших модификаций под той же лицензией.
 
 **Остались вопросы?** Я в [Telegram](https://t.me/crinny) (предпочтительно) или [ВКонтакте](https://vk.me/crinnyx). Убедитесь, что прочли [это](http://neprivet.ru/), прежде чем писать. Канал с новостями о разработке в Telegram: <https://t.me/b0mb3rch>
-
-![Poster](https://user-images.githubusercontent.com/42045258/73613525-b4304880-4607-11ea-889f-2eba89fa1052.png)
