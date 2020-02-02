@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         onlyCountries: ['ru', 'ua', 'kz', 'by', 'custom'],
         initialCountry: 'ru',
         separateDialCode: true,
-        preferredCountries: ['ru', 'ua', 'kz', 'by']
     });
 });
 
