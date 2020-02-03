@@ -1,4 +1,5 @@
 import inspect
+import logging
 import os
 import re
 import subprocess
@@ -20,6 +21,8 @@ os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r
 app = web.Application()
 routes = web.RouteTableDef()
 
+logging.disable(logging.WARNING)
+
 
 @click.command()
 @click.option("--ip", default="127.0.0.1")
@@ -39,11 +42,14 @@ def main(ip: str, port: int, skip_updates: bool, repair: bool):
 
 
 def update(force: bool = False):
-    output = subprocess.run(["pip3", "list", "--outdated"], stdout=subprocess.PIPE)
+    output = subprocess.run(
+        ["pip3", "list", "--outdated"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL
+    )
     if force or "b0mb3r" in output.stdout.decode():
         subprocess.run(
             ["pip3", "install", "b0mb3r", "--force-reinstall" if force else "--upgrade"],
-            stdout=subprocess.PIPE,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
         )
         os.execlp("b0mb3r", " ".join(sys.argv[1:]) or "--port 8080")
 
@@ -52,7 +58,9 @@ def open_url(url: str):
     try:
         if "ANDROID_DATA" in os.environ:  # If device is running Termux
             subprocess.run(
-                ["am", "start", "--user", "0", "-a", "android.intent.action.VIEW", "-d", url,]
+                ["am", "start", "--user", "0", "-a", "android.intent.action.VIEW", "-d", url,],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
             )
     except FileNotFoundError:
         pass
