@@ -1,4 +1,3 @@
----
 image: restyled/restyler-black:v19.3b0
 command:
 - black
