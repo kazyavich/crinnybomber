@@ -8,7 +8,7 @@ class CloudLoyal(Service):
             json={
                 "country": 2,
                 "phone": self.phone,
-                "roistatVisit": 47637,
+                "roistatVisit": "47637",
                 "experiments": {"new_header_title": "1"},
             },
         )
