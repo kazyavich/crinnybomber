@@ -15,6 +15,10 @@ class Service:
 
         self.client.headers = {"User-Agent": self.user_agent}
 
+        self.russian_name = "".join(
+            random.choice("АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя")
+            for _ in range(5)
+        )
         self.username = self.password = "".join(
             random.choice(string.ascii_letters) for _ in range(12)
         )
