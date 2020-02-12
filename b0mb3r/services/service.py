@@ -23,7 +23,6 @@ class Service:
             random.choice(string.ascii_letters) for _ in range(12)
         )
         self.email = self.username + "@gmail.com"
-        self.country_codes = {"7": "ru", "375": "by", "380": "ua"}
 
         self.get = self.client.get
         self.post = self.client.post
