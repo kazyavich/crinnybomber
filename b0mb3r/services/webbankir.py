@@ -3,7 +3,7 @@ from service import Service
 
 class WebBankir(Service):
     async def run(self):
-        await self.get(
+        await self.post(
             "https://ng-api.webbankir.com/user/v2/create",
             json={
                 "lastName": self.russian_name,
