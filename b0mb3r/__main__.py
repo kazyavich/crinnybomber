@@ -86,7 +86,7 @@ async def attack(number_of_cycles: int, phone_code: str, phone: str):
         for module, service in load_services().items():
             try:
                 await getattr(module, service)(phone, phone_code).run()
-            except aiohttp.client_exceptions.ClientError:
+            except (aiohttp.client_exceptions.ClientError, ValueError):
                 continue
 
 
