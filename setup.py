@@ -10,7 +10,7 @@ URL = "https://github.com/crinny/b0mb3r"
 EMAIL = "b0mb3r.abuse@gmail.com"
 AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = "2.3.9"
+VERSION = "2.4.0"
 
 REQUIRED = ["aiohttp", "phonenumbers", "click"]
 

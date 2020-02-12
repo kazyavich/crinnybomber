@@ -13,7 +13,6 @@ import phonenumbers
 import pkg_resources
 from aiohttp import web
 
-COUNTRY_CODES = {"7": "ru", "375": "by", "380": "ua"}
 API_REQUIRED_PARAMS = ["number_of_cycles", "phone_code", "phone"]
 
 os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
@@ -132,15 +131,6 @@ async def start_attack(request):
         phone_code = data["phone_code"]
         if phone_code == "":
             phone_code = str(phonenumbers.parse("+" + phone).country_code)
-        elif phone_code not in COUNTRY_CODES.keys():
-            return web.json_response(
-                {
-                    "success": False,
-                    "error_code": 400,
-                    "error_description": "This phone_code is not supported.",
-                },
-                status=400,
-            )
 
         await attack(number_of_cycles, phone_code, phone)
 

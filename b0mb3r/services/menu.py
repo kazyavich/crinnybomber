@@ -5,7 +5,6 @@ class MenuUA(Service):
     async def run(self):
         await self.post(
             "https://www.menu.ua/kiev/delivery/registration/direct-registration.html",
-            headers={"X-Requested-With": "XMLHttpRequest"},
             data={
                 "user_info[fullname]": self.russian_name,
                 "user_info[phone]": self.formatted_phone,
@@ -16,9 +15,5 @@ class MenuUA(Service):
         )
         await self.post(
             "https://www.menu.ua/kiev/delivery/profile/show-verify.html",
-            headers={"X-Requested-With": "XMLHttpRequest"},
-            data={
-                "phone": self.formatted_phone,
-                "do": "phone"
-            },
+            data={"phone": self.formatted_phone, "do": "phone"},
         )
