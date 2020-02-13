@@ -42,9 +42,11 @@ def main(ip: str, port: int, skip_updates: bool, repair: bool):
 
 def update(force: bool = False):
     output = subprocess.run(
-        ["pip3", "list", "--outdated"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL
+        ["pip3", "install", "b0mb3r", "--upgrade"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
     )
-    if force or "b0mb3r" in output.stdout.decode():
+    if force or "Successfully installed b0mb3r" in output.stdout.decode():
         subprocess.run(
             ["pip3", "install", "b0mb3r", "--force-reinstall" if force else "--upgrade"],
             stdout=subprocess.DEVNULL,
