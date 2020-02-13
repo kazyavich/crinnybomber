@@ -7,10 +7,10 @@ from setuptools import setup
 NAME = "b0mb3r"
 DESCRIPTION = "Открытый и бесплатный СМС бомбер"
 URL = "https://github.com/crinny/b0mb3r"
-EMAIL = "b0mb3r.abuse@gmail.com"
+EMAIL = ""
 AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = "2.4.1.1"
+VERSION = "2.4.2"
 
 REQUIRED = ["aiohttp", "phonenumbers", "click"]
 
