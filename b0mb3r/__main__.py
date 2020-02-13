@@ -150,4 +150,5 @@ async def start_attack(request):
         )
 
 
-main()
+if __name__ == "__main__":
+    main()
