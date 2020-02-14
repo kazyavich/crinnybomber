@@ -1,6 +1,7 @@
 from service import Service
 from base64 import b64encode
 
+
 class Aitu(Service):
     async def run(self):
         if self.phone_code in ["7", "380", "998", "1"]:
