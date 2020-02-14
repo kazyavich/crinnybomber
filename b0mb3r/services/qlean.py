@@ -15,6 +15,6 @@ class Qlean(Service):
             params={
                 "phone": self.formatted_phone,
                 "clientId": "undefined",
-                "sessionId": str(randint(5000, 9999))
-            }
+                "sessionId": str(randint(5000, 9999)),
+            },
         )

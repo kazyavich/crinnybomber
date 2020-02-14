@@ -10,6 +10,6 @@ class Alpari(Service):
                 "client_type": "personal",
                 "email": self.email,
                 "mobile_phone": self.formatted_phone,
-                "deliveryOption": "sms"
-            }
+                "deliveryOption": "sms",
+            },
         )

@@ -9,7 +9,7 @@ class Apteka(Service):
             await self.post(
                 "https://apteka.ru/_action/auth/getForm/",
                 data={
-                    "form[NAME]": "", 
+                    "form[NAME]": "",
                     "form[PERSONAL_GENDER]": "",
                     "form[PERSONAL_BIRTHDAY]": "",
                     "form[EMAIL]": "",
@@ -19,6 +19,6 @@ class Apteka(Service):
                     "user_agreement": "on",
                     "personal_data_agreement": "on",
                     "formType": "simple",
-                    "utc_offset": "120"
+                    "utc_offset": "120",
                 },
             )

@@ -18,6 +18,6 @@ class Ingos(Service):
                     "LastName": self.russian_name,
                     "SecondName": self.russian_name,
                     "Phone": self.phone,
-                    "Email": self.email
-                }
+                    "Email": self.email,
+                },
             )
