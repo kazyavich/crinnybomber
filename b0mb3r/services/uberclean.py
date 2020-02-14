@@ -3,7 +3,7 @@ from service import Service
 
 class UberClean(Service):
     async def run(self):
-        if self.phone_code == "7":
+        if self.phone_code == "7" and len(self.formatted_phone) == 11:
             phone = self.formatted_phone
             phone_with_mask = f"+{phone[0]} ({phone[1:4]}) {phone[4:7]}-{phone[7:9]}{phone[9:11]}"
             await self.post(
