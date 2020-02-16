@@ -4,7 +4,8 @@ from service import Service
 class OkeanSushi(Service):
     async def run(self):
         if self.phone_code == "7" and len(self.formatted_phone) == 11:
-            await self.get("https://okeansushi.ru/includes/contact.php",
+            await self.get(
+                "https://okeansushi.ru/includes/contact.php",
                 params={
                     "call_mail": "1",
                     "ajax": "1",
