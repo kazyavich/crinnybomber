@@ -31,7 +31,7 @@ class Service(ABC):
 
     @staticmethod
     def format(phone, mask):
-        """Converts a phone number for a given mask.
+        """Converts a phone number by mask.
 
         Parameters
         ----------
