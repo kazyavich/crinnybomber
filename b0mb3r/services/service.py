@@ -29,7 +29,23 @@ class Service(ABC):
         self.post = self.client.post
         self.options = self.client.options
 
-    def format(self, phone, mask):
+    @staticmethod
+    def format(phone, mask):
+        """Converts a phone number for a given mask.
+
+        Parameters
+        ----------
+        phone : str
+            The phone number
+        mask : str
+            The phone number mask
+
+        Returns
+        -------
+        str
+            formatted phone number
+        """
+
         phone_with_mask = ""
         for symbol in mask:
             if symbol == "*":
