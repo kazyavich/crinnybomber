@@ -4,7 +4,8 @@ from service import Service
 class Sushi33(Service):
     async def run(self):
         if self.phone_code == "380":
-            await self.get("https://auth.pizza33.ua/ua/join/check/",
+            await self.get(
+                "https://auth.pizza33.ua/ua/join/check/",
                 params={
                     "callback": "angular.callbacks._1",
                     "email": self.email,

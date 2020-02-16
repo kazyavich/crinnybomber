@@ -6,7 +6,8 @@ class OkeanSushi(Service):
         if self.phone_code == "7" and len(self.formatted_phone) == 11:
             phone = self.phone
             phone_with_mask = f"8 ({phone[:3]}) {phone[3:6]}-{phone[6:8]}-{phone[8:10]}"
-            await self.get("https://okeansushi.ru/includes/contact.php",
+            await self.get(
+                "https://okeansushi.ru/includes/contact.php",
                 params={
                     "call_mail": "1",
                     "ajax": "1",
