@@ -29,6 +29,16 @@ class Service(ABC):
         self.post = self.client.post
         self.options = self.client.options
 
+    def format(self, phone, mask):
+        phone_with_mask = ""
+        for symbol in mask:
+            if (symbol == "*"):
+                phone_with_mask += phone[0]
+                phone = phone[(len(phone)-1)*-1:]
+            else:
+                phone_with_mask += symbol
+        return phone_with_mask
+
     @abstractmethod
     async def run(self):
         pass
