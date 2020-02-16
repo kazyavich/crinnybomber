@@ -32,7 +32,7 @@ class Service(ABC):
     def format(self, phone, mask):
         phone_with_mask = ""
         for symbol in mask:
-            if (symbol == "*"):
+            if symbol == "*":
                 phone_with_mask += phone[0]
                 phone = phone[(len(phone)-1)*-1:]
             else:
