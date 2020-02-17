@@ -3,7 +3,7 @@ from json import dumps
 from random import choice
 
 
-class Taxi292(Service):
+class Taxi3933(Service):
     phone_codes = ["380"]
 
     async def run(self):
