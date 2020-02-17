@@ -16,7 +16,6 @@ class Taxi292(Service):
         servers = [
             "http://91.211.117.3:7201",
             "http://91.211.117.4:7200"
-
         ]
         await self.post(
             "https://ap4.taxi/api/TaxiAPI.php",
