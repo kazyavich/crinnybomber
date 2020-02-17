@@ -10,5 +10,3 @@ class SushiProfi(Service):
                 "phone": self.phone, "name": self.russian_name
             }	
         )
-
-        print(await a.json())
