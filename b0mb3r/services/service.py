@@ -6,17 +6,18 @@ import aiohttp
 
 
 class Service(ABC):
-    user_agent = "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2224.3 Safari/537.36"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2224.3 Safari/537.36",
+        "X-Requested-With": "XMLHttpRequest"
+    }
     country_codes = {"7": "ru", "375": "by", "380": "ua"}
     phone_codes = []
-    client = aiohttp.ClientSession()
+    client = aiohttp.ClientSession(headers=headers)
 
     def __init__(self, phone, phone_code):
         self.phone = phone
         self.phone_code = phone_code
         self.formatted_phone = self.phone_code + self.phone
-
-        self.client.headers = {"User-Agent": self.user_agent, "X-Requested-With": "XMLHttpRequest"}
 
         self.russian_name = "".join(
             random.choice("АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя")
