@@ -87,7 +87,9 @@ async def attack(number_of_cycles: int, phone_code: str, phone: str):
     for _ in range(number_of_cycles):
         for module, service in load_services().items():
             try:
-                await getattr(module, service)(phone, phone_code).run()
+                supported_phone_codes = getattr(module, service).phone_codes
+                if len(supported_phone_codes) == 0 or phone_code in supported_phone_codes:
+                    await getattr(module, service)(phone, phone_code).run()
             except (aiohttp.client_exceptions.ClientError, ValueError):
                 continue
 
@@ -139,6 +141,8 @@ async def start_attack(request):
         return web.json_response({"success": True})
     except Exception as error:
         formatted_error = f"{type(error).__name__}: {error}"
+        print(formatted_error)
+        print(traceback.format_exc())
         return web.json_response(
             {
                 "success": False,

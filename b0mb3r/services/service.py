@@ -1,12 +1,14 @@
 import random
 import string
 from abc import ABC, abstractmethod
+
 import aiohttp
 
 
 class Service(ABC):
     user_agent = "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2224.3 Safari/537.36"
     country_codes = {"7": "ru", "375": "by", "380": "ua"}
+    phone_codes = []
     client = aiohttp.ClientSession()
 
     def __init__(self, phone, phone_code):
@@ -30,13 +32,13 @@ class Service(ABC):
         self.options = self.client.options
 
     @staticmethod
-    def format(phone, mask, mask_symbol = "*"):
-        if (len(phone) == mask.count(mask_symbol)):
+    def format(phone, mask, mask_symbol="*"):
+        if len(phone) == mask.count(mask_symbol):
             formatted_phone = ""
             for symbol in mask:
                 if symbol == mask_symbol:
                     formatted_phone += phone[0]
-                    phone = phone[(len(phone)-1)*-1:]
+                    phone = phone[(len(phone) - 1) * -1 :]
                 else:
                     formatted_phone += symbol
         else:
