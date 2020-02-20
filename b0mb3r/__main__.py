@@ -131,8 +131,6 @@ async def start_attack(request):
         return web.json_response({"success": True})
     except Exception as error:
         formatted_error = f"{type(error).__name__}: {error}"
-        print(formatted_error)
-        print(traceback.format_exc())
         return web.json_response(
             {
                 "success": False,
