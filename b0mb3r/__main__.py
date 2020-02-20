@@ -41,18 +41,8 @@ def main(ip: str, port: int, skip_updates: bool, repair: bool):
 
 
 def update(force: bool = False):
-    output = subprocess.run(
-        ["pip3", "install", "b0mb3r", "--upgrade"],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL,
-    )
-    if force or "Successfully installed b0mb3r" in output.stdout.decode():
-        subprocess.run(
-            ["pip3", "install", "b0mb3r", "--force-reinstall" if force else "--upgrade"],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
-        os.execlp("b0mb3r", " ".join(sys.argv[1:]) or "--port 8080")
+    if force:
+        subprocess.run(["pip3", "install", "b0mb3r", "--force-reinstall"],)
 
 
 def open_url(url: str):

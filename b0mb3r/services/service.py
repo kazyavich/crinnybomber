@@ -8,13 +8,13 @@ import aiohttp
 class Service(ABC):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2224.3 Safari/537.36",
-        "X-Requested-With": "XMLHttpRequest"
+        "X-Requested-With": "XMLHttpRequest",
     }
     country_codes = {"7": "ru", "375": "by", "380": "ua"}
     phone_codes = []
     client = aiohttp.ClientSession(headers=headers)
 
-    def __init__(self, phone, phone_code):
+    def __init__(self, phone: str, phone_code: str):
         self.phone = phone
         self.phone_code = phone_code
         self.formatted_phone = self.phone_code + self.phone
@@ -33,7 +33,7 @@ class Service(ABC):
         self.options = self.client.options
 
     @staticmethod
-    def format(phone, mask, mask_symbol="*"):
+    def format(phone: str, mask: str, mask_symbol: str = "*"):
         if len(phone) == mask.count(mask_symbol):
             formatted_phone = ""
             for symbol in mask:

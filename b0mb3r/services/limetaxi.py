@@ -10,7 +10,7 @@ class LimeTaxi(Service):
             "С Гуливер (пл. Спортивная 1)",
             "ЦИРК (пл.Победы2)",
             "АЭРОПОРТ БОРИСПОЛЬ",
-            "Метро Героев Днепра"
+            "Метро Героев Днепра",
         ]
         await self.post(
             "https://limetaxi.com.ua/dynamicframe/index.php?order=1",
@@ -23,9 +23,7 @@ class LimeTaxi(Service):
                 "route[1][number]": "",
                 "route[1][name]": "",
                 "comment": "",
-                "user_phone": self.format(
-                    self.formatted_phone, "+**(***)***-**-**"
-                ),
+                "user_phone": self.format(self.formatted_phone, "+**(***)***-**-**"),
                 "time": "",
                 "dt": "",
                 "minibus": "false",
@@ -38,6 +36,6 @@ class LimeTaxi(Service):
                 "receipt": "false",
                 "user_full_name": "widget",
                 "route_undefined": "true",
-                "add_cost": "20"
-            }
+                "add_cost": "20",
+            },
         )
