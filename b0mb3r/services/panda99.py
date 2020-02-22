@@ -1,5 +1,6 @@
-from service import Service
 from time import time
+
+from service import Service
 
 
 class Panda99(Service):

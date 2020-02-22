@@ -1,5 +1,6 @@
-from service import Service
 from base64 import b64encode
+
+from service import Service
 
 
 class Aitu(Service):

@@ -1,6 +1,7 @@
-from service import Service
 from json import dumps
 from random import choice
+
+from service import Service
 
 
 class Taxi3933(Service):

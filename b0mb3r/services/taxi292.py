@@ -1,11 +1,10 @@
-from service import Service
 from json import dumps
 from random import choice
 
+from service import Service
+
 
 class Taxi292(Service):
-    phone_codes = ["380", "7", "375"]
-
     async def run(self):
         locations = [
             {

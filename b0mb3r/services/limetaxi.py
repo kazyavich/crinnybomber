@@ -1,5 +1,6 @@
-from service import Service
 from random import choice
+
+from service import Service
 
 
 class LimeTaxi(Service):
