@@ -48,4 +48,4 @@ pip3 install b0mb3r -U
 
 **Остались вопросы?** Я в [Telegram](https://t.me/crinny). Убедитесь, что прочли [это](http://neprivet.ru/), прежде чем писать. Канал с новостями о разработке в Telegram: <https://t.me/b0mb3rch>
 
-**Наш чат**: https://t.me/b0mb3rchat
+**Наш чат**: https://t.me/b0mb3r4at
