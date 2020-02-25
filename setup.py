@@ -10,13 +10,13 @@ URL = "https://github.com/crinny/b0mb3r"
 EMAIL = ""
 AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = "2.4.8"
+VERSION = "2.4.8.1"
 
 REQUIRED = ["aiohttp", "phonenumbers", "click"]
 
 if "ANDROID_DATA" in os.environ:  # If device is running Termux
     run(
-        ["pkg", "install", "clang"], stdout=PIPE, input="y\n", encoding="ascii",
+        ["pkg", "install", "clang", "-y"], stdout=PIPE, encoding="ascii",
     )
 
 here = os.path.abspath(os.path.dirname(__file__))
