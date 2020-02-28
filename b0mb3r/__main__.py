@@ -13,16 +13,21 @@ import phonenumbers
 import pkg_resources
 import sentry_sdk
 from aiohttp import web
+from multidict import MultiDict
+from sentry_sdk.integrations.aiohttp import AioHttpIntegration
 
 API_REQUIRED_PARAMS = ["number_of_cycles", "phone_code", "phone"]
 
-os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
+# os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
 
 app = web.Application()
 routes = web.RouteTableDef()
 
 logging.disable(logging.WARNING)
-sentry_sdk.init("https://f9be285af3ff4f949baba007ddebee24@sentry.io/3144601")
+sentry_sdk.init(
+    "https://f9be285af3ff4f949baba007ddebee24@sentry.io/3144601",
+    integrations=[AioHttpIntegration()],
+)
 
 
 @click.command()
@@ -113,6 +118,7 @@ async def start_attack(request):
                         "error_description": f"You need to specify {required_param}.",
                     },
                     status=400,
+                    headers=MultiDict({"Access-Control-Allow-Origin": "*"}),
                 )
         phone = re.sub("[^0-9]", "", data["phone"])
 
@@ -125,6 +131,7 @@ async def start_attack(request):
                     "error_description": "The minimum value for number_of_cycles is 1.",
                 },
                 status=400,
+                headers=MultiDict({"Access-Control-Allow-Origin": "*"}),
             )
 
         phone_code = data["phone_code"]
@@ -133,7 +140,9 @@ async def start_attack(request):
 
         await attack(number_of_cycles, phone_code, phone)
 
-        return web.json_response({"success": True})
+        return web.json_response(
+            {"success": True}, headers=MultiDict({"Access-Control-Allow-Origin": "*"})
+        )
     except Exception as error:
         sentry_sdk.capture_exception(error)
         formatted_error = f"{type(error).__name__}: {error}"
@@ -145,6 +154,7 @@ async def start_attack(request):
                 "traceback": traceback.format_exc(),
             },
             status=500,
+            headers=MultiDict({"Access-Control-Allow-Origin": "*"}),
         )
 
 
