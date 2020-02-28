@@ -1,3 +1,4 @@
 aiohttp
 phonenumbers
 click
+sentry-sdk

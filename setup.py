@@ -12,7 +12,7 @@ AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
 VERSION = "2.4.9"
 
-REQUIRED = ["aiohttp", "phonenumbers", "click"]
+REQUIRED = ["aiohttp", "phonenumbers", "click", "sentry-sdk"]
 
 if "ANDROID_DATA" in os.environ:  # If device is running Termux
     run(
