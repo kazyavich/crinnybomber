@@ -11,6 +11,7 @@ import aiohttp.client_exceptions
 import click
 import phonenumbers
 import pkg_resources
+import sentry_sdk
 from aiohttp import web
 
 API_REQUIRED_PARAMS = ["number_of_cycles", "phone_code", "phone"]
@@ -21,6 +22,7 @@ app = web.Application()
 routes = web.RouteTableDef()
 
 logging.disable(logging.WARNING)
+sentry_sdk.init("https://f9be285af3ff4f949baba007ddebee24@sentry.io/3144601")
 
 
 @click.command()
@@ -80,7 +82,10 @@ async def attack(number_of_cycles: int, phone_code: str, phone: str):
                 supported_phone_codes = getattr(module, service).phone_codes
                 if len(supported_phone_codes) == 0 or phone_code in supported_phone_codes:
                     await getattr(module, service)(phone, phone_code).run()
-            except (aiohttp.client_exceptions.ClientError, ValueError):
+            except ValueError as error:
+                sentry_sdk.capture_exception(error)
+                continue
+            except aiohttp.ClientError:
                 continue
 
 
@@ -130,6 +135,7 @@ async def start_attack(request):
 
         return web.json_response({"success": True})
     except Exception as error:
+        sentry_sdk.capture_exception(error)
         formatted_error = f"{type(error).__name__}: {error}"
         return web.json_response(
             {
