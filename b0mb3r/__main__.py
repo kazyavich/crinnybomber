@@ -18,7 +18,7 @@ from sentry_sdk.integrations.aiohttp import AioHttpIntegration
 
 API_REQUIRED_PARAMS = ["number_of_cycles", "phone_code", "phone"]
 
-# os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
+os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r"))
 
 app = web.Application()
 routes = web.RouteTableDef()
