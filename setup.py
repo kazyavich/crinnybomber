@@ -63,6 +63,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Operating System :: Android",
         "Operating System :: Microsoft :: Windows",
-        "Topic :: Internet" "License :: Free To Use But Restricted",
+        "Topic :: Internet",
+        "License :: Free To Use But Restricted",
     ],
 )
