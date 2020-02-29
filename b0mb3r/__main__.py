@@ -23,10 +23,19 @@ os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r
 app = web.Application()
 routes = web.RouteTableDef()
 
+
+def retrieve_installed_version():
+    package_info = subprocess.run(
+        [sys.executable, "-m", "pip", "show", "b0mb3r"], stdout=subprocess.PIPE
+    )
+    return re.search(br"Version: ([0-9]\.[0-9.]*)", package_info.stdout).group(1)
+
+
 logging.disable(logging.WARNING)
 sentry_sdk.init(
     "https://f9be285af3ff4f949baba007ddebee24@sentry.io/3144601",
     integrations=[AioHttpIntegration()],
+    release=retrieve_installed_version().decode(),
 )
 
 
@@ -49,12 +58,12 @@ def main(ip: str, port: int, skip_updates: bool, repair: bool):
 
 def update(force: bool = False):
     if force:
-        subprocess.run(["pip3", "install", "b0mb3r", "--force-reinstall"],)
+        subprocess.run([sys.executable, "-m", "pip", "install", "b0mb3r", "--force-reinstall"],)
 
 
 def open_url(url: str):
     try:
-        if "ANDROID_DATA" in os.environ:  # If device is running Termux
+        if "com.termux" in os.environ.get("PREFIX", ""):  # If device is running Termux
             subprocess.run(
                 ["am", "start", "--user", "0", "-a", "android.intent.action.VIEW", "-d", url,],
                 stdout=subprocess.DEVNULL,

@@ -7,12 +7,14 @@ import aiohttp
 
 class Service(ABC):
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2224.3 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 5.0.2; 7045Y Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2728.43 Mobile Safari/537.36",
         "X-Requested-With": "XMLHttpRequest",
     }
     country_codes = {"7": "ru", "375": "by", "380": "ua"}
     phone_codes = []
-    client = aiohttp.ClientSession(headers=headers)
+    client = aiohttp.ClientSession(
+        headers=headers, connector=aiohttp.TCPConnector(verify_ssl=False)
+    )
 
     def __init__(self, phone: str, phone_code: str):
         self.phone = phone

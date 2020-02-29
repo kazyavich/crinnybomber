@@ -1,7 +1,7 @@
 const input = document.querySelector('#phone');
 let intlTelInput;
 
-const countryMap = {
+const countryPlaceholderMap = {
     ru: "912 345-67-89",
     ua: "50 123 4567",
     kz: "771 000 9998",
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 input.addEventListener("countrychange", () => {
-    input.placeholder = countryMap[intlTelInput.getSelectedCountryData().iso2];
+    input.placeholder = countryPlaceholderMap[intlTelInput.getSelectedCountryData().iso2];
 });
 
 document.querySelector("#main-form").addEventListener("submit", async (e) => {

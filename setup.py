@@ -1,5 +1,6 @@
 import io
 import os
+import sys
 from subprocess import run, PIPE
 
 from setuptools import setup
@@ -10,13 +11,24 @@ URL = "https://github.com/crinny/b0mb3r"
 EMAIL = ""
 AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = "2.5.0.1"
+VERSION = "2.5.1"
 
 REQUIRED = ["aiohttp", "phonenumbers", "click", "sentry-sdk"]
 
-if "ANDROID_DATA" in os.environ:  # If device is running Termux
+if "com.termux" in os.environ.get("PREFIX", ""):  # If device is running Termux
     run(
-        ["pkg", "install", "clang", "-y"], stdout=PIPE, encoding="ascii",
+        [
+            "MULTIDICT_NO_EXTENSIONS=1",
+            sys.executable,
+            "-m",
+            "pip",
+            "install",
+            "multidict",
+            "--no-build-isolation",
+            "--no-use-pep517",
+        ],
+        stdout=PIPE,
+        encoding="ascii",
     )
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -49,7 +61,8 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: Implementation :: CPython",
-        "Programming Language :: Python :: Implementation :: PyPy",
+        "Operating System :: Android",
+        "Operating System :: Microsoft :: Windows",
+        "Topic :: Internet" "License :: Free To Use But Restricted",
     ],
 )
