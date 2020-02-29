@@ -17,7 +17,11 @@
 
     <h3>Для Android</h3>
 
-    Установите приложение [Termux](https://play.google.com/store/apps/details?id=com.termux), запустите его и введите команду `pkg install python`.
+    Установите приложение [Termux](https://play.google.com/store/apps/details?id=com.termux), запустите его и введите следующие команды поочерёдно:
+     ```sh
+     pkg install python
+     pkg install clang
+     ```
 
 2. Введите следующую команду ([куда?](http://comp-profi.com/kak-vyzvat-komandnuyu-stroku-ili-konsol-windows/)):
 
