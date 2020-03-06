@@ -23,6 +23,8 @@ os.chdir(os.path.join(pkg_resources.get_distribution("b0mb3r").location, "b0mb3r
 app = web.Application()
 routes = web.RouteTableDef()
 
+use_no_interface = False
+
 
 def retrieve_installed_version():
     package_info = subprocess.run(
@@ -43,16 +45,21 @@ sentry_sdk.init(
 @click.option("--ip", default="127.0.0.1")
 @click.option("--port", default="8080")
 @click.option("--skip-updates", is_flag=True, default=False)
-@click.option("--repair", "--force-update", is_flag=True, default=False)
-def main(ip: str, port: int, skip_updates: bool, repair: bool):
+@click.option("--repair", is_flag=True, default=False)
+@click.option("--no-interface", is_flag=True, default=False)
+def main(ip: str, port: int, skip_updates: bool, repair: bool, no_interface: bool):
+    global use_no_interface
+
     if repair:
         update(force=True)
     elif not skip_updates:
         update()
+    use_no_interface = no_interface
 
     app.add_routes(routes)
     app.add_routes([web.static("/static", "static")])
-    open_url(f"http://{ip}:{port}/")
+    if not use_no_interface:
+        open_url(f"http://{ip}:{port}/")
     web.run_app(app, host=ip, port=port)
 
 
@@ -105,6 +112,8 @@ async def attack(number_of_cycles: int, phone_code: str, phone: str):
 
 @routes.get("/")
 async def index(_):
+    if use_no_interface:
+        return web.Response(status=404)
     with open("templates/index.html", encoding="utf-8") as template:
         services_count = str(len(load_services()))
         response = template.read().replace("services_count", services_count)

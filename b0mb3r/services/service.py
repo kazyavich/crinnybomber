@@ -1,4 +1,5 @@
 import random
+import re
 import string
 from abc import ABC, abstractmethod
 
@@ -33,6 +34,10 @@ class Service(ABC):
         self.get = self.client.get
         self.post = self.client.post
         self.options = self.client.options
+
+    async def get_csrf_token(self, url: str, pattern):
+        response = await self.get(url)
+        return re.search(pattern, await response.text()).group(1).strip()
 
     @staticmethod
     def format(phone: str, mask: str, mask_symbol: str = "*"):

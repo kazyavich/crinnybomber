@@ -11,7 +11,7 @@ URL = "https://github.com/crinny/b0mb3r"
 EMAIL = ""
 AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = "2.5.1"
+VERSION = "2.5.2"
 
 REQUIRED = ["aiohttp", "phonenumbers", "click", "sentry-sdk"]
 
