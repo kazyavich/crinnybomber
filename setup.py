@@ -1,7 +1,5 @@
 import io
 import os
-import sys
-from subprocess import run, PIPE
 
 from setuptools import setup
 
@@ -11,25 +9,9 @@ URL = "https://github.com/crinny/b0mb3r"
 EMAIL = ""
 AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = "2.5.2"
+VERSION = "2.5.3"
 
-REQUIRED = ["aiohttp", "phonenumbers", "click", "sentry-sdk"]
-
-if "com.termux" in os.environ.get("PREFIX", ""):  # If device is running Termux
-    run(
-        [
-            "MULTIDICT_NO_EXTENSIONS=1",
-            sys.executable,
-            "-m",
-            "pip",
-            "install",
-            "multidict",
-            "--no-build-isolation",
-            "--no-use-pep517",
-        ],
-        stdout=PIPE,
-        encoding="ascii",
-    )
+REQUIRED = ["aiohttp[speedups]", "phonenumbers", "click", "sentry-sdk"]
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -64,6 +46,6 @@ setup(
         "Operating System :: Android",
         "Operating System :: Microsoft :: Windows",
         "Topic :: Internet",
-        "License :: Free To Use But Restricted",
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
     ],
 )
