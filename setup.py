@@ -9,9 +9,9 @@ URL = "https://github.com/crinny/b0mb3r"
 EMAIL = ""
 AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = "2.5.3"
+VERSION = "2.5.3.1"
 
-REQUIRED = ["aiohttp[speedups]", "phonenumbers", "click", "sentry-sdk"]
+REQUIRED = ["aiohttp", "phonenumbers", "click", "sentry-sdk"]
 
 here = os.path.abspath(os.path.dirname(__file__))
 
