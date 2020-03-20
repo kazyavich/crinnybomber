@@ -4,6 +4,7 @@
     <br /><br />
     <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-%23FFD242?logo=python&logoColor=white">
     <img alt="Downloads" src="https://pepy.tech/badge/b0mb3r">
+    <img alt="Repo size" src="https://img.shields.io/github/repo-size/crinny/b0mb3r">
     <img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg">
 </p>
 
