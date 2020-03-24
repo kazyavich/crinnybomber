@@ -13,7 +13,6 @@ import phonenumbers
 import pkg_resources
 import sentry_sdk
 from aiohttp import web
-from multidict import MultiDict
 from sentry_sdk.integrations.aiohttp import AioHttpIntegration
 
 API_REQUIRED_PARAMS = ["number_of_cycles", "phone_code", "phone"]
@@ -136,7 +135,7 @@ async def start_attack(request):
                         "error_description": f"You need to specify {required_param}.",
                     },
                     status=400,
-                    headers=MultiDict({"Access-Control-Allow-Origin": "*"}),
+                    headers={"Access-Control-Allow-Origin": "*"},
                 )
         phone = re.sub("[^0-9]", "", data["phone"])
 
@@ -149,7 +148,7 @@ async def start_attack(request):
                     "error_description": "The minimum value for number_of_cycles is 1.",
                 },
                 status=400,
-                headers=MultiDict({"Access-Control-Allow-Origin": "*"}),
+                headers={"Access-Control-Allow-Origin": "*"},
             )
 
         phone_code = data["phone_code"]
@@ -158,9 +157,7 @@ async def start_attack(request):
 
         await attack(number_of_cycles, phone_code, phone)
 
-        return web.json_response(
-            {"success": True}, headers=MultiDict({"Access-Control-Allow-Origin": "*"})
-        )
+        return web.json_response({"success": True}, headers={"Access-Control-Allow-Origin": "*"})
     except Exception as error:
         sentry_sdk.capture_exception(error)
         formatted_error = f"{type(error).__name__}: {error}"
@@ -172,7 +169,7 @@ async def start_attack(request):
                 "traceback": traceback.format_exc(),
             },
             status=500,
-            headers=MultiDict({"Access-Control-Allow-Origin": "*"}),
+            headers={"Access-Control-Allow-Origin": "*"},
         )
 
 

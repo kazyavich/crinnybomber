@@ -3,7 +3,7 @@ from service import Service
 
 class ICQ(Service):
     async def run(self):
-        await self.client.post(
+        await self.post(
             "https://www.icq.com/smsreg/requestPhoneValidation.php",
             data={
                 "msisdn": self.formatted_phone,

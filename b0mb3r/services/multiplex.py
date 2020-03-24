@@ -2,8 +2,9 @@ from service import Service
 
 
 class Multiplex(Service):
+    phone_codes = ["380"]
+
     async def run(self):
-        if self.phone_code == "380":
-            await self.post(
-                "https://auth.multiplex.ua/login", json={"login": self.formatted_phone},
-            )
+        await self.post(
+            "https://auth.multiplex.ua/login", json={"login": self.formatted_phone},
+        )
