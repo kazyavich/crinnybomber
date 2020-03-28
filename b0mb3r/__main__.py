@@ -6,7 +6,7 @@ import subprocess
 import sys
 import traceback
 import webbrowser
-
+from asyncio import CancelledError
 import aiohttp.client_exceptions
 import click
 import phonenumbers
@@ -102,10 +102,10 @@ async def attack(number_of_cycles: int, phone_code: str, phone: str):
                 supported_phone_codes = getattr(module, service).phone_codes
                 if len(supported_phone_codes) == 0 or phone_code in supported_phone_codes:
                     await getattr(module, service)(phone, phone_code).run()
+            except (TimeoutError, CancelledError, aiohttp.ClientError):
+                continue
             except ValueError as error:
                 sentry_sdk.capture_exception(error)
-                continue
-            except aiohttp.ClientError:
                 continue
 
 
@@ -113,6 +113,7 @@ async def attack(number_of_cycles: int, phone_code: str, phone: str):
 async def index(_):
     if use_no_interface:
         return web.Response(status=404)
+
     with open("templates/index.html", encoding="utf-8") as template:
         services_count = str(len(load_services()))
         response = template.read().replace("services_count", services_count)
