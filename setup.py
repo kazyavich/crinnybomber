@@ -1,22 +1,17 @@
-import io
-import os
-
 from setuptools import setup
 
 NAME = "b0mb3r"
-DESCRIPTION = "Открытый и бесплатный СМС бомбер"
+DESCRIPTION = "Открытый и бесплатный СМС бомбер 💣"
 URL = "https://github.com/crinny/b0mb3r"
 EMAIL = ""
 AUTHOR = "crinny"
 REQUIRES_PYTHON = ">=3.7.0"
-VERSION = "2.5.6.2"
+VERSION = "2.5.7"
 
-REQUIRED = ["aiohttp", "phonenumbers", "click", "sentry-sdk"]
-
-here = os.path.abspath(os.path.dirname(__file__))
+REQUIRED = ["aiohttp", "aiodns", "phonenumbers", "click", "sentry-sdk"]
 
 try:
-    with io.open(os.path.join(here, "README.md"), encoding="utf-8") as f:
+    with open("README.md", encoding="utf-8") as f:
         long_description = "\n" + f.read()
 except FileNotFoundError:
     long_description = DESCRIPTION

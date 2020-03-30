@@ -38,11 +38,11 @@ document.querySelector("#main-form").addEventListener("submit", async (e) => {
 
     const formData = new FormData(document.querySelector('#main-form'));
     formData.append('phone_code', intlTelInput.getSelectedCountryData().dialCode);
-
     const response = await fetch("/attack/start", {
         method: 'POST',
         body: formData,
     });
+
     if (response) {
         document.querySelector('main').style.cssText = "animation:blur; animation-duration:0.6s; animation-fill-mode:both; animation-direction:reverse";
         document.querySelector('footer').style.cssText = document.querySelector('main').style.cssText;
