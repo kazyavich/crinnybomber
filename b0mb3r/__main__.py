@@ -100,12 +100,11 @@ def load_services():
 
 
 async def attack(number_of_cycles: int, phone_code: str, phone: str):
-    for _ in range(number_of_cycles):
+    status["started_at"] = datetime.now().isoformat()
+    for cycle in range(number_of_cycles):
         for i, a in enumerate(load_services().items()):
             module, service = a
-            status["currently_at"] = i
-            if status["currently_at"] == 0:
-                status["started_at"] = datetime.now().isoformat()
+            status["currently_at"] = (i + 1) * (cycle + 1)
             try:
                 supported_phone_codes = getattr(module, service).phone_codes
                 if len(supported_phone_codes) == 0 or phone_code in supported_phone_codes:
@@ -115,6 +114,8 @@ async def attack(number_of_cycles: int, phone_code: str, phone: str):
             except ValueError as error:
                 sentry_sdk.capture_exception(error)
                 continue
+    status["started_at"] = None
+    status["currently_at"] = None
 
 
 @routes.get("/")
