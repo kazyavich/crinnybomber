@@ -7,6 +7,7 @@ import sys
 import traceback
 import webbrowser
 from asyncio import CancelledError
+from datetime import datetime
 
 import aiohttp.client_exceptions
 import click
@@ -15,6 +16,8 @@ import pkg_resources
 import sentry_sdk
 from aiohttp import web
 from sentry_sdk.integrations.aiohttp import AioHttpIntegration
+
+from b0mb3r.status import status
 
 API_REQUIRED_PARAMS = ["number_of_cycles", "phone_code", "phone"]
 
@@ -98,7 +101,11 @@ def load_services():
 
 async def attack(number_of_cycles: int, phone_code: str, phone: str):
     for _ in range(number_of_cycles):
-        for module, service in load_services().items():
+        for i, a in enumerate(load_services().items()):
+            module, service = a
+            status["currently_at"] = i
+            if status["currently_at"] == 0:
+                status["started_at"] = datetime.now().isoformat()
             try:
                 supported_phone_codes = getattr(module, service).phone_codes
                 if len(supported_phone_codes) == 0 or phone_code in supported_phone_codes:
@@ -173,6 +180,13 @@ async def start_attack(request):
             status=500,
             headers={"Access-Control-Allow-Origin": "*"},
         )
+
+
+@routes.get("/attack/status")
+async def start_status(request):
+    # since there is no timezone, hope that your
+    # bomber instance is in the same timezone as you
+    return web.json_response(status)
 
 
 if __name__ == "__main__":
