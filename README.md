@@ -1,6 +1,6 @@
 <h1 align="center">Добро пожаловать в b0mb3r 👋</h1>
 <p align="center">
-    Открытый и бесплатный СМС бомбер
+    *ВРЕМЕННО НЕ РАБОТАЕТ!*
     <br /><br />
     <img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-%23FFD242?logo=python&logoColor=white">
     <img alt="Downloads" src="https://pepy.tech/badge/b0mb3r">
@@ -54,3 +54,5 @@ pip3 install b0mb3r -U
 **Остались вопросы?** Я в [Telegram](https://t.me/crinny). Убедитесь, что прочли [это](http://neprivet.ru/), прежде чем писать. 
 
 Канал с новостями о разработке в Telegram: <https://t.me/b0mb3rch>. Чат: https://t.me/b0mb3r4at
+
+**ВРЕМЕННО НЕ РАБОТАЕТ!**
